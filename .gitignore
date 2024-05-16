@@ -3,3 +3,5 @@ models/*
 results
 wandb 
 __pycache__
+data/*
+!src/data
