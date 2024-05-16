@@ -40,7 +40,7 @@ All checkpoints can be found [here](https://drive.google.com/drive/folders/1VASo
 | WavLM      |  `emocall/wavlm/audio-model` | 
 
 ## Training 
-In the scripts folder you can fined training and evaluation scripts for  Wav2Vec2.0, HuBERT, WavLM on Dusha and EmoCall Datasets.
+In the `scripts` folder you can fined training and evaluation scripts for Wav2Vec2.0, HuBERT, WavLM on Dusha and EmoCall Datasets.
 
 ## Results
 | Models     | Accuracy on EmoCall (Group_1)| Accuracy on EmoCall (Group_2)|
