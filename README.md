@@ -68,13 +68,15 @@ To run the app, run the following command:
 python app.py
 ```
 ## Screenshots of App
+
 Main Window 
+
 ![alt text](assets/image.png)
 
-Select a video(.mp4) or audio(.wav) file to analyze by cklicking on "Выбрать файл" button
+Select a video(.mp4) or audio(.wav) file to analyze by cklicking on "Выбрать файл" button.
 ![alt text](assets/image-1.png)
 
-Cklick  on a playback button to play selected video or audio file
+Cklick  on a playback button to play selected video or audio file.
 ![alt text](assets/image-2.png)
 
 Cklick  on a "Анализировать эмоции" button to analayze file on the subject of presence of certain emotion (Anger, Positive, Neutral, Sad and Other) with WavLM model.
