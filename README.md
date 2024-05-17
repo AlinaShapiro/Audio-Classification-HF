@@ -73,16 +73,16 @@ Main Window
 
 ![alt text](assets/image.png)
 
-Select a video(.mp4) or audio(.wav) file to analyze by cklicking on "Выбрать файл" button.
+Select a video(.mp4) or audio(.wav, .mp3) file to analyze by clicking on "Выбрать файл" button.
 ![alt text](assets/image-1.png)
 
-Cklick  on a playback button to play selected video or audio file.
+Click on the playback button to play the selected video or audio file.
 ![alt text](assets/image-2.png)
 
-Cklick  on a "Анализировать эмоции" button to analayze file on the subject of presence of certain emotion (Anger, Positive, Neutral, Sad and Other) with WavLM model.
+Click on a "Анализировать эмоции" button to analyze a file for the presence of certain emotions (anger, positive, neutral, sad, and other) using the WavLM model.
 ![alt text](assets/image-3.png)
 
-After the process of analyzing is done you can see a graphical report of emotional state
+After the analysis process is completed, you will see a graphical representation of your emotional state.
 ![alt text](assets/image-4.png)
 
 ## Conclusion
