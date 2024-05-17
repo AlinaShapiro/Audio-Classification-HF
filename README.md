@@ -86,4 +86,4 @@ After the analysis process is completed, you will see a graphical representation
 ![alt text](assets/image-4.png)
 
 ## Conclusion
-Emotion recognition in speech is a challenging but important task that has many practical applications. By using application that accuratly identifies emotional state of call-center employees call-center athorities may use that to enhance  employees' emotional well-being, productivity level.
+Emotion recognition in speech is a challenging but important task with many practical applications. By accurately identifying the emotional state of call center employees, call center authorities can use this information to enhance the employees' emotional well-being and productivity level.
