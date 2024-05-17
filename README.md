@@ -19,8 +19,8 @@ The files contain speech that is sampled at 16 kHz and saved as 16-bit PCM WAV f
 
 | Models     | Pretrained Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 | [facebook/hubert-large-ls960-ft](https://huggingface.co/facebook/hubert-large-ls960-ft)    |
-| HuBERT     |[jonatasgrosman/wav2vec2-large-xlsr-53-russian](https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian) |
+| Wav2Vec2.0 |  [jonatasgrosman/wav2vec2-large-xlsr-53-russian](https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian)   |
+| HuBERT     |[facebook/hubert-large-ls960-ft](https://huggingface.co/facebook/hubert-large-ls960-ft) |
 | WavLM      | [microsoft/wavlm-large](https://huggingface.co/microsoft/wavlm-large)  |
 
 ### Speech models after training on Dusha dataset
