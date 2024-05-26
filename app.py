@@ -11,6 +11,7 @@ from moviepy.editor import *
 import numpy as np
 import torchaudio
 import torch
+import json
 
 from transformers import WavLMForSequenceClassification, Wav2Vec2FeatureExtractor
 import torchaudio
@@ -92,13 +93,14 @@ class MainWindow(QtWidgets.QWidget):
 
     def __init__(self):
         super().__init__()
-      
+        self.emo_res = dict()
+        self.info = "Поддерживаемые форматы файлов: аудио - *.wav *.mp3 *.m4a; видео - *.mp4"
         #Select
         self.selectFileButton = QtWidgets.QPushButton("Выберите файл")
         self.selectFileButton.clicked.connect(self.selectFile)
         
         #Selected info
-        self.selectedFileText = QtWidgets.QLabel(text = "Выбранный файл: N/A")  
+        self.selectedFileText = QtWidgets.QLabel(text = self.info)  
 
         self.createPieChart()
 
@@ -124,8 +126,12 @@ class MainWindow(QtWidgets.QWidget):
         detectButton.clicked.connect(self.detect)
 
         self.videoWidget = QVideoWidget()
+        self.videoWidget.setMaximumHeight(450)
         self.mediaPlayer.setVideoOutput(self.videoWidget) 
 
+        self.dumpButton = QtWidgets.QPushButton("Выгрузить отчет")
+        self.dumpButton.clicked.connect(self.dumpToFile)
+        self.dumpButton.setDisabled(True)
         #Vertiacal Layout and adding widgets to it
         vLayout = QtWidgets.QVBoxLayout()
 
@@ -138,7 +144,7 @@ class MainWindow(QtWidgets.QWidget):
         vLayout.addWidget(self.playButton)
 
         vLayout.addWidget(detectButton)
-
+        vLayout.addWidget(self.dumpButton)
         #Main Window Geometry
         self.setGeometry(300, 300, 1020, 800)
         self.setLayout(vLayout)
@@ -157,6 +163,7 @@ class MainWindow(QtWidgets.QWidget):
         self.chart.setAnimationOptions(QChart.SeriesAnimations)
         self.chartView = QChartView(self.chart)
         self.chartView.setRenderHint(QPainter.Antialiasing)
+        #self.setMinimumHeight(800)
 
     @staticmethod
     def single_split(audio_wav, from_sec, to_sec):
@@ -198,17 +205,24 @@ class MainWindow(QtWidgets.QWidget):
         return input.input_values[0].to(device)
 
     def selectFile(self):
-        self.selectedFileText.setText("Выбранный файл: -")
+        self.selectedFileText.setText(self.info)
         file, _ = QtWidgets.QFileDialog.getOpenFileName(self,
                                                         'Open File',
                                                         './',
-                                                        'Audio Files (*.wav);;Video Files (*.mp4 *.webm)')
+                                                        'Audio Files (*.wav *.mp3 *.m4a);;Video Files (*.mp4)')
         if not file:
             return
         else:
+            self.dumpButton.setDisabled(True)
             print(file)
             self.series.clear()
             self.chart.setTitle("")
+            '''
+            if not file.endswith("wav") and not file.endswith("mp3") and not file.endswith("m4a") and not file.endswith("mp4") and not file.endswith("webm"):
+                msgBox = QtWidgets.QMessageBox()
+                msgBox.setText("The doc")
+                msgBox.exec();
+            '''
             if file.endswith(".mp4"):
                self.mediaPlayer.setMedia(
                 QtMultimedia.QMediaContent(QtCore.QUrl.fromLocalFile(file)))
@@ -254,6 +268,25 @@ class MainWindow(QtWidgets.QWidget):
         print("Thread finished!")
 
 
+    def output_to_json(self, emo_res):
+        res = {"analysis_result":
+               {"file_id":"21412",
+                "file_path": self.fileName,
+                "emotions":{"positive": round(self.series.slices()[0].percentage(),2),
+                            "angry": round(self.series.slices()[1].percentage(),2),
+                            "neutral": round(self.series.slices()[2].percentage(),2),
+                            "sad": round(self.series.slices()[3].percentage(),2),
+                            "other": round(self.series.slices()[4].percentage(),2)
+                            }
+                }
+              }
+        
+        with open(f"./{os.path.basename(self.fileName).replace('.wav','.json')}", "w") as fp:
+            json.dump(res, fp, ensure_ascii=False, indent=4)
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setText("Отчет был успешно сохранен в текущей директории")
+        msgBox.exec()
+
     def classifyEmotion(self, progress_callback):
         emo_res = {'neutral': 0,'angry': 0, 'positive': 0, 'sad': 0, 'other': 0}
         print(self.fileName)
@@ -283,6 +316,9 @@ class MainWindow(QtWidgets.QWidget):
 
     def print_output(self, emo_res):
         self.pbar.hide()
+
+        self.emo_res = emo_res
+        self.dumpButton.setEnabled(True)
 
         if self.firstDetect:
             self.series.append("Радость", 0)
@@ -326,7 +362,8 @@ class MainWindow(QtWidgets.QWidget):
         
         self.threadpool.start(worker)
 
-
+    def dumpToFile(self):
+        self.output_to_json(self.emo_res)
     
 if __name__ == '__main__':
 
