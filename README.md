@@ -19,28 +19,27 @@ The files contain speech that is sampled at 16 kHz and saved as 16-bit PCM WAV f
 
 | Models     | Pretrained Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 |  [jonatasgrosman/wav2vec2-large-xlsr-53-russian](https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian)   |
-| HuBERT     |[facebook/hubert-large-ls960-ft](https://huggingface.co/facebook/hubert-large-ls960-ft) |
+| Wav2Vec2.0 | [facebook/hubert-large-ls960-ft](https://huggingface.co/facebook/hubert-large-ls960-ft)    |
+| HuBERT     |[jonatasgrosman/wav2vec2-large-xlsr-53-russian](https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian) |
 | WavLM      | [microsoft/wavlm-large](https://huggingface.co/microsoft/wavlm-large)  |
 
 ### Speech models after training on Dusha dataset
-All checkpoints can be found [here](https://drive.google.com/drive/folders/1VASoT9HM0NOveSSgJ9AmKGInryiR6zYe?usp=sharing)
 
-| Models   (Group_1) |Path to Checkpoints in the folder above|
+| Models   (Group_1) | Pretrained Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 |  `dusha/wav2vec2/audio-model`|
-| HuBERT     |`dusha/hubert/audio-model`|
-| WavLM      |  `dusha/wavlm/audio-model` |
+| Wav2Vec2.0 |  |
+| HuBERT     |  |
+| WavLM      |   |
 
 ### Speech models after training on Dusha and EmoCall datasets
-| Models   (Group_2)  | Path to Checkpoints in the folder abov |
+| Models   (Group_2)  | Pretrained Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 |  `emocall/wav2vec/audio-model`|
-| HuBERT     |`emocall/hubert/audio-model`|
-| WavLM      |  `emocall/wavlm/audio-model` | 
+| Wav2Vec2.0 | |
+| HuBERT     | |
+| WavLM      |  |
 
 ## Training 
-In the `scripts` folder you can fined training and evaluation scripts for Wav2Vec2.0, HuBERT, WavLM on Dusha and EmoCall Datasets.
+In the scripts folder you can fined training and evaluation scripts for  Wav2Vec2.0, HuBERT, WavLM on Dusha and EmoCall Datasets.
 
 ## Results
 | Models     | Accuracy on EmoCall (Group_1)| Accuracy on EmoCall (Group_2)|
@@ -68,22 +67,21 @@ To run the app, run the following command:
 python app.py
 ```
 ## Screenshots of App
-
 Main Window 
-
 ![alt text](assets/image.png)
 
-Select a video(.mp4) or audio(.wav, .mp3) file to analyze by clicking on "Выбрать файл" button.
+Select a video(.mp4) or audio(.wav, .mp3, .m4a) file to analyze by cklicking on "Выбрать файл" button
 ![alt text](assets/image-1.png)
 
-Click on the playback button to play the selected video or audio file.
+Cklick  on a playback button to play selected video or audio file
 ![alt text](assets/image-2.png)
 
-Click on a "Анализировать эмоции" button to analyze a file for the presence of certain emotions (anger, positive, neutral, sad, and other) using the WavLM model.
+Cklick  on a "Анализировать эмоции" button to analayze file on the subject of presence of certain emotion (Anger, Positive, Neutral, Sad and Other) with WavLM model.
 ![alt text](assets/image-3.png)
 
-After the analysis process is completed, you will see a graphical representation of your emotional state.
+After the process of analyzing is done you can see a graphical report of emotional state
 ![alt text](assets/image-4.png)
-
+In addition, you can dowload an emotional state report to .json file by cklicking on "Выгрузить отчет" button.
+![alt text](assets/image-5.png)
 ## Conclusion
-Emotion recognition in speech is a challenging but important task with many practical applications. By accurately identifying the emotional state of call center employees, call center authorities can use this information to enhance the employees' emotional well-being and productivity level.
+Emotion recognition in speech is a challenging but important task that has many practical applications. By using application that accuratly identifies emotional state of call-center employees call-center athorities may use that to enhance  employees' emotional well-being, productivity level.
