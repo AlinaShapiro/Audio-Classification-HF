@@ -25,18 +25,18 @@ The files contain speech that is sampled at 16 kHz and saved as 16-bit PCM WAV f
 
 ### Speech models after training on Dusha dataset
 
-| Models   (Group_1) | Pretrained Checkpoints |
+| Models   (Group_1) |  Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 |  |
-| HuBERT     |  |
-| WavLM      |   |
+| Wav2Vec2.0 | `dusha/wav2vec2/audio-model` |
+| HuBERT     | `dusha/hubert/audio-model` |
+| WavLM      |`dusha/wavlm/audio-model`|
 
 ### Speech models after training on Dusha and EmoCall datasets
-| Models   (Group_2)  | Pretrained Checkpoints |
+| Models   (Group_2)  | Checkpoints |
 |-------- | ------- |
-| Wav2Vec2.0 | |
-| HuBERT     | |
-| WavLM      |  |
+| Wav2Vec2.0 |`emocall/wav2vec/audio-model`|
+| HuBERT     |`emocall/hubert/audio-model`|
+| WavLM      |`emocall/wavlm/audio-model` |
 
 ## Training 
 In the scripts folder you can fined training and evaluation scripts for  Wav2Vec2.0, HuBERT, WavLM on Dusha and EmoCall Datasets.
