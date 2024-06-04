@@ -17,6 +17,8 @@ The files contain speech that is sampled at 16 kHz and saved as 16-bit PCM WAV f
 ## Models
 ### Pre-trained speech model based on transformer architecture
 
+All checkpoints can be found [here](https://drive.google.com/drive/folders/1VASoT9HM0NOveSSgJ9AmKGInryiR6zYe?usp=sharing)
+
 | Models     | Pretrained Checkpoints |
 |-------- | ------- |
 | Wav2Vec2.0 | [facebook/hubert-large-ls960-ft](https://huggingface.co/facebook/hubert-large-ls960-ft)    |
